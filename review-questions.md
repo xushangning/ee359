@@ -5,7 +5,7 @@
 - Forward problem: give function $f$ and input $x$, compute $y$
 - Learning problem is an inverse problem because we are given $x$ and $y$ and required to find $f$.
 
-6. Why variable dependencies (interactions) could become an extremely difficult and even an impossible problem? Give philosophical, mathematical, physical, computational, and numerical examples for such a singularity.
+7. Why variable dependencies (interactions) could become an extremely difficult and even an impossible problem? Give philosophical, mathematical, physical, computational, and numerical examples for such a singularity.
 
 Hilbert tenth problem is, per Wikipedia,
 
