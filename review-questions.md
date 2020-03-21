@@ -20,3 +20,21 @@ Examples:
 - Physical: Three-body problem
 - Computational: Indeterminacy in concurrent computing (Dijkstra proposed *concurrent computing* in 1965, not *indeterminacy* in concurrent computing)
 - Numerical: Chaos
+
+8. Why a Euclidean-based measure would be most favored but usually impossible to obtain for a real world issue?
+
+Per Wikipedia,
+
+> In mathematical analysis, a **measure** on a set is a systematic way to assign a number to each suitable subset of that set, intuitively interpreted as its size. In this sense, a measure is a generalization of the concepts of length, area, and volume.
+
+It is unlikely that the word "measure" means the "size of sets" here in the question, taking into account the fact that words like "点积与测度 (Inner Product)" appears in the slides. Inner product in Euclidean space defines the famous Euclidean *metric* i.e. the straight-line distance between two points. Probably YB confuses "measure" with "metric", which "defines a distance between each pair of elements of a set" and is translated as "度量" or "距离函数".
+
+It remains to be explained what the f\*\*k do "Euclidean-based metric" and "impossible to obtain" even mean. It could mean that the Euclidean metric or metrics in the Euclidean space fails to characterize the notion of distance in *some* feature space but succeeds in others, which doesn't say anything at all.
+
+52. Why local solution is the key difficulty in data mining, for more generalizable learning?
+
+From YB's own words,
+
+> ……局部解对于人工智能也好，数据挖掘也好，是个杀手。为什么呢？因为你有很多局部解的话，这个 y = f(x) 的话 x 和 y 的关系就会出现范围，你不同的局部解的话就会有不同的范围，你就必须考虑不同的 x 和不同的 y 要用不同的 f，你不能用一个函数去 extrapolate 所有可能的 x 和 y 的关系，所以你这个 local 解的话就会严重的约束你这个解的泛化能力。
+
+YB seems to agree that each local solution of hyperparameters only makes correct predictions for a range of input, so to cover as much input as possible, we have to combine predictors with different sets of hyperparameters.
