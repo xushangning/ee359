@@ -31,6 +31,33 @@ It is unlikely that the word "measure" means the "size of sets" here in the ques
 
 It remains to be explained what the f\*\*k do "Euclidean-based metric" and "impossible to obtain" even mean. It could mean that the Euclidean metric or metrics in the Euclidean space fails to characterize the notion of distance in *some* feature space but succeeds in others, which doesn't say anything at all.
 
+17. Using the Least Square as the objective function, we try to find the best set of parameters; what is the statistical justification for the Lease Square if the underlying distribution is Gaussian?
+
+The weight vector obtained by least square is the same as that obtained from MLE assuming that the underlying distribution of error is Gaussian. See derivation on the slide.
+
+22. Give a probabilistic interpretation for logistic regression, how is it related to the MLE-based generative methods from a Bayesian perspective?
+
+Logistic regression makes the following assumption in probability (in the scenario of binary classification):
+$$
+    \Pr(Y = 1|X = x) = \frac{1}{1 + e^{-w^Tx}}
+$$
+and performs MLE to solve for $w$.
+
+Generative methods model $p(y|x)$ with the Bayesian formula $p(x|y)p(y)$, while logistic regression directly imposes a distribution onto $p(y|x)$.
+
+23. Can you provide a probabilistic comparison for liner and logistic regression?
+
+Linear regression assumes that the error $\epsilon \sim \mathcal{N}(0, \sigma^2)$, where $\epsilon = Y - w^TX$, so
+$$
+    \Pr(Y = y|X = x) = \Pr(\epsilon = y - w^Tx) = \frac{1}{\sqrt{2\pi}\sigma}\exp(\frac{(y - w^Tx)^2}{2\sigma^2})
+$$
+
+Refer to the previous question for the probability assumption of logistic regression.
+
+24. Why the log of odd would be something related to entropy and effective information?
+
+The expression of the so-called log odd (should be log-likelihood) is exactly the entropy, saving for the minus sign.
+
 52. Why local solution is the key difficulty in data mining, for more generalizable learning?
 
 From YB's own words,
