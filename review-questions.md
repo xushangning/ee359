@@ -1,5 +1,7 @@
 # Review Questions
 
+## Learning and Search
+
 1. Why all learning problems are inverse problems, requiring unbounded exhaustive searches, thus ill-posed?
 
 - Forward problem: give function $f$ and input $x$, compute $y$
