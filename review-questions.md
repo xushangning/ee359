@@ -33,6 +33,11 @@ It is unlikely that the word "measure" means the "size of sets" here in the ques
 
 It remains to be explained what the f\*\*k do "Euclidean-based metric" and "impossible to obtain" even mean. It could mean that the Euclidean metric or metrics in the Euclidean space fails to characterize the notion of distance in *some* feature space but succeeds in others, which doesn't say anything at all.
 
+14. Using these losses to approach the linear boundary of a overlapping problem, inevitably some risks will be incurred; give two different approaches to remedy the risk using the SVM-based hinge loss as an example;
+
+- Soft margin (which uses the hinge loss)
+- Kernel trick
+
 17. Using the Least Square as the objective function, we try to find the best set of parameters; what is the statistical justification for the Lease Square if the underlying distribution is Gaussian?
 
 The weight vector obtained by least square is the same as that obtained from MLE assuming that the underlying distribution of error is Gaussian. See derivation on the slide.
@@ -59,6 +64,62 @@ Refer to the previous question for the probability assumption of logistic regres
 24. Why the log of odd would be something related to entropy and effective information?
 
 The expression of the so-called log odd (should be log-likelihood) is exactly the entropy, saving for the minus sign.
+
+32. What is the dual problem? What is strong duality?
+
+For an optimization problem with constraints
+$$
+    \textrm{minimize}\quad f(x)\\
+    \textrm{subject to}\quad f_i(x) \le 0, i = 1, \dots, m\\
+    h_i(x) = 0, i = 1, \dots, p
+$$
+we define its Lagrangian to be
+$$
+    L(x, \lambda, \nu) = f(x) + \sum_{i = 1}^m \lambda_i f_i(x) + \sum_{i = 1}^p \nu_i h_i(x)
+$$
+where $\lambda, \nu$ are the Lagrange multiplier vectors. The original/primal problem can be rewritten as
+$$
+    \textrm{minimize}\quad \max_{\lambda \succeq 0, \nu} L(x, \lambda, \nu)
+$$
+and its dual problem is
+$$
+    \textrm{maximize}\quad \min_{x} L(x, \lambda, \nu)\\
+    \textrm{subject to}\quad \lambda \succeq 0
+$$
+The primal and dual problem exhibits strong duality when their optimum are equal.
+
+33. What are the KKT conditions? What is the key implication of them? Including the origin of SV?
+
+KKT conditions is a set of conditions that is both necessary and sufficient for a convex problem to exhibits strong duality. (Expressions omitted)
+
+One of KKT conditions is complementary slackness. In the optimization of SVM, complementary slackness implies
+$$
+    \alpha_i(1 - (w^Tx_i + b)y_i) = 0, i = 1, \dots n
+$$
+
+For $i$ such that $\alpha_i \ne 0$, $x_i$ is a support vector.
+
+34. What is the idea of soft margin SVM, how it is a nice example of regularization?
+
+- Idea: allow classification mistakes
+    $$
+        (w^Tx_i + b)y_i \ge 1 - \xi_i,\, \xi_i \ge 0
+    $$
+    but penalize them using hinge loss
+    $$
+        \textrm{minimize}\quad w^Tw + C\sum_{i = 1}^n \xi_i
+    $$
+- $w^Tw$ can be seen as an $L_2$ normalization term.
+
+35.  What is the idea of kernel? Why not much additional computational complexity?
+
+We wish to maps $x$ to higher-dimension space $\phi(x)$ so that inseparable data become separable in higher dimension. In SVM, to compute $w$ and $b$, we only need $\phi(x_i)^T\phi(x_j)$, instead of $\phi(x_i)$ or $\phi(x_j)$. The expression of $\phi(x_i)^T\phi(x_j)$ is often much simple than either $\phi(x_i)$ or $\phi(x_j)$.
+
+36. What is the general idea behind the kernel? What key computation do we perform? Why is it so general in data modeling?
+
+- General idea: maps $x$ to higher-dimension space $\phi(x)$ so that inseparable data become separable in higher dimension.
+- Key computation: $K(x_i, x_j) = \phi(x_i)^T\phi(x_j)$
+- Why general: prevalence of feature space's nonlinearity 
 
 52. Why local solution is the key difficulty in data mining, for more generalizable learning?
 
